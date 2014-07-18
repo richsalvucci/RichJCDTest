@@ -1,0 +1,10 @@
+= form_for @business do |f|
+  =f.label :name
+  =f.text_field :name, placeholder: "Name"
+  %br
+  =f.label :phone_number
+  =f.text_field :phone_number, placeholder: "Phone Number"
+  %br
+  =f.submit "Save", class: "btn btn-primary" 
+%hr
+= link_to "Businesses", businesses_path, class: "btn btn-primary"

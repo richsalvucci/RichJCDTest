@@ -1,0 +1,10 @@
+%h1 Businesses
+- @businesses.each do |business|
+  = business.name
+  |
+  = business.phone_number
+  = link_to "Show", business_path(business), class: "btn btn-sm btn-primary"
+  = link_to "Edit", edit_business_path(business), class: "btn btn-sm btn-primary"
+  %br
+%hr
+= link_to "Add a Business", new_business_path, class: "btn btn-primary"
