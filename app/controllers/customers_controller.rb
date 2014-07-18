@@ -7,14 +7,14 @@ before_filter :find_customer, only: [:show, :edit, :update, :destroy]
   end
 
   def new
-    @customer = @business.customer.new
+    @customer = @business.customers.new
   end
 
   def create
     @customer = @business.customers.create customer_params
     if @customer.save
       flash[:notice] = "Thank You"
-      redirect_to business_customers_path
+      redirect_to business_path(@business)
     else
       flash[:error] = "Please enter a name and phone number."
       render :new
@@ -23,7 +23,7 @@ before_filter :find_customer, only: [:show, :edit, :update, :destroy]
 
   def update
     @customer.update_attributes customer_params
-    redirect_to business_customers_path
+    redirect_to business_path(@business)
   end
 
   def edit 
@@ -35,7 +35,7 @@ before_filter :find_customer, only: [:show, :edit, :update, :destroy]
 
   def destroy
     @customer.delete
-    redirect_to business_customers_path
+    redirect_to business_path(@business)
   end
 private
   def find_business
